@@ -3,6 +3,26 @@ import productImg from "../assets/product.png";
 import f1Img from "../assets/f1.png";
 import figmaImg from "../assets/figma.png";
 
+
+import reactIcon from "../assets/icons/react.png";
+import nodeIcon from "../assets/icons/node.png";
+import nextjsIcon from "../assets/icons/nextjs.jpeg";
+import tailwindIcon from "../assets/icons/tailwind.jpeg";
+import pythonIcon from "../assets/icons/python.png";
+import mongoIcon from "../assets/icons/mongodb.png";
+import sqlIcon from "../assets/icons/sql.png";
+import expressIcon from "../assets/icons/express.png";
+import jsIcon from "../assets/icons/js.jpeg";
+import tsIcon from "../assets/icons/ts.png";
+import htmlIcon from "../assets/icons/html.jpeg";
+import cssIcon from "../assets/icons/css.png";
+import powerbiIcon from "../assets/icons/powerbi.jpeg";
+import tableauIcon from "../assets/icons/tableou.png";
+import excelIcon from "../assets/icons/excel.jpeg";
+import mlIcon from "../assets/icons/ml.png";
+
+
+
 export const siteMeta = {
   name: "MD SAHIL KHAN",
   tagline: "Building delightful interfaces & scalable backends",
@@ -24,23 +44,23 @@ export const about = {
   location: "BTM Layout,Bangalore, Karnataka"
 };
 
-export const skills = [
-  { name: "React", icon: "/src/assets/icons/react.png" },
-  { name: "Node.js", icon: "/src/assets/icons/node.png" },
-  { name: "Next.js", icon: "/src/assets/icons/nextjs.jpeg" },
-  { name: "Tailwind CSS", icon: "/src/assets/icons/tailwind.jpeg" },
-  { name: "Python", icon: "/src/assets/icons/python.png" },
-  { name: "MongoDB", icon: "/src/assets/icons/mongodb.png" },
-  { name: "SQL", icon: "/src/assets/icons/sql.png" },
-  { name: "Exprees", icon: "/src/assets/icons/express.png" },
-  { name: "javascript", icon: "/src/assets/icons/js.jpeg" },
-  { name: "Typescript", icon: "/src/assets/icons/ts.png" },
-  { name: "HTML", icon: "/src/assets/icons/html.jpeg" },
-  { name: "CSS", icon: "/src/assets/icons/css.png" },
-  { name: "PowerBi", icon: "/src/assets/icons/powerbi.jpeg" },
-  { name: "Tableau", icon: "/src/assets/icons/tableou.png" },
-  { name: "Excel", icon: "/src/assets/icons/excel.jpeg" },
-  { name: "Machine Learning", icon: "/src/assets/icons/ml.png" },
+ export const skills = [
+  { name: "React", icon: reactIcon },
+  { name: "Node.js", icon: nodeIcon },
+  { name: "Next.js", icon: nextjsIcon },
+  { name: "Tailwind CSS", icon: tailwindIcon },
+  { name: "Python", icon: pythonIcon },
+  { name: "MongoDB", icon: mongoIcon },
+  { name: "SQL", icon: sqlIcon },
+  { name: "Express", icon: expressIcon },
+  { name: "JavaScript", icon: jsIcon },
+  { name: "TypeScript", icon: tsIcon },
+  { name: "HTML", icon: htmlIcon },
+  { name: "CSS", icon: cssIcon },
+  { name: "Power BI", icon: powerbiIcon },
+  { name: "Tableau", icon: tableauIcon },
+  { name: "Excel", icon: excelIcon },
+  { name: "Machine Learning", icon: mlIcon },
 ];
 
 // ✅ Fixed project section with imports
