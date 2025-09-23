@@ -202,7 +202,7 @@ export default function Hero() {
                     transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                   />
                   <img 
-                    src="/src/assets/profile.jpg" 
+                    src="/public/profile.jpg" 
                     alt="Profile" 
                     className="relative w-28 h-28 object-cover rounded-full mx-auto top-2 left-2 border-4 border-white dark:border-gray-900" 
                   />
