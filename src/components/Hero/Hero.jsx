@@ -3,7 +3,7 @@ import TypedText from "./TypedText";
 import { siteMeta } from "../../data/siteContent";
 import { motion } from "framer-motion";
 
-// ✅ Import image from assets
+
 import profile from "../../assets/profile.jpg";
 
 export default function Hero() {

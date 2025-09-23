@@ -1,3 +1,8 @@
+ // ✅ Import project images
+import productImg from "../assets/product.png";
+import f1Img from "../assets/f1.png";
+import figmaImg from "../assets/figma.png";
+
 export const siteMeta = {
   name: "MD SAHIL KHAN",
   tagline: "Building delightful interfaces & scalable backends",
@@ -38,6 +43,7 @@ export const skills = [
   { name: "Machine Learning", icon: "/src/assets/icons/ml.png" },
 ];
 
+// ✅ Fixed project section with imports
 export const projects = [
   {
     id: "f1",
@@ -46,7 +52,7 @@ export const projects = [
     github: "https://github.com/mdsahilkhan2001/F1-streetwear-Framer-e-commerce",
     live: "https://f1-streetwear-framer-e-commerce.vercel.app/",
     tags: ["Web", "UI/UX"],
-    img: "/src/assets/product.png"
+    img: productImg
   },
   {
     id: "movie",
@@ -55,38 +61,33 @@ export const projects = [
     github: "https://github.com/mdsahilkhan2001/movie-explorer-website",
     live: "#",
     tags: ["Web"],
-    img: "/src/assets/f1.png"
+    img: f1Img
   },
-{
-id :"SkinCare",
-title:"Beauty product",
-desc:"Cloned the beauty product platform using React.js, Next.js, and Tailwind CSS.",
-github:"https://github.com/mdsahilkhan2001/Convert-provided-Figma-designs-into-fully-responsive-web-pages",
-live:"https://convert-provided-figma-designs-into.vercel.app/",
-tags: ["Web"],
-img: "/src/assets/figma.png"
-}
-   
+  {
+    id: "SkinCare",
+    title: "Beauty product",
+    desc: "Cloned the beauty product platform using React.js, Next.js, and Tailwind CSS.",
+    github: "https://github.com/mdsahilkhan2001/Convert-provided-Figma-designs-into-fully-responsive-web-pages",
+    live: "https://convert-provided-figma-designs-into.vercel.app/",
+    tags: ["Web"],
+    img: figmaImg
+  }
 ];
 
 export const timeline = [
- {
-  id : "collage",
-  title:"Collage",
-  timeframe:"2019 - 2023",
-  desc:"B.Tech in Computer Science and Engineering from Gaya collage of engineering , gaya.",
- },
-
-
-
-{
-id : 11,
-title:"Frontend Developer",
-  company:"DMX Tech Services Pvt. Ltd. Bangalore",
-timeframe:"Jun 2024 - Present",
-desc:"Building responsive and user-friendly web applications using React.js, Next.js, and Tailwind CSS.",
-},
-
+  {
+    id: "collage",
+    title: "Collage",
+    timeframe: "2019 - 2023",
+    desc: "B.Tech in Computer Science and Engineering from Gaya collage of engineering , gaya.",
+  },
+  {
+    id: 11,
+    title: "Frontend Developer",
+    company: "DMX Tech Services Pvt. Ltd. Bangalore",
+    timeframe: "Jun 2024 - Present",
+    desc: "Building responsive and user-friendly web applications using React.js, Next.js, and Tailwind CSS.",
+  },
   {
     id: 1,
     title: "MERN Stack Javascript Training - Fynde",

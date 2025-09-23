@@ -1,10 +1,49 @@
  import React, { useState } from "react";
 import { motion } from "framer-motion";
 
+// ✅ Import all icons properly
+import reactIcon from "../../assets/icons/react.png";
+import nodeIcon from "../../assets/icons/node.png";
+import nextjsIcon from "../../assets/icons/nextjs.jpeg";
+import tailwindIcon from "../../assets/icons/tailwind.jpeg";
+import pythonIcon from "../../assets/icons/python.png";
+import mongodbIcon from "../../assets/icons/mongodb.png";
+import sqlIcon from "../../assets/icons/sql.png";
+import expressIcon from "../../assets/icons/express.png";
+import jsIcon from "../../assets/icons/js.jpeg";
+import tsIcon from "../../assets/icons/ts.png";
+import htmlIcon from "../../assets/icons/html.jpeg";
+import cssIcon from "../../assets/icons/css.png";
+import powerbiIcon from "../../assets/icons/powerbi.jpeg";
+import tableauIcon from "../../assets/icons/tableou.png";
+import excelIcon from "../../assets/icons/excel.jpeg";
+import mlIcon from "../../assets/icons/ml.png";
+
+// ✅ Map skill names to imported icons
+const skillIcons = {
+  "React": reactIcon,
+  "Node.js": nodeIcon,
+  "Next.js": nextjsIcon,
+  "Tailwind CSS": tailwindIcon,
+  "Python": pythonIcon,
+  "MongoDB": mongodbIcon,
+  "SQL": sqlIcon,
+  "Express": expressIcon,
+  "Exprees": expressIcon, // handle typo
+  "javascript": jsIcon,
+  "Typescript": tsIcon,
+  "HTML": htmlIcon,
+  "CSS": cssIcon,
+  "PowerBi": powerbiIcon,
+  "Tableau": tableauIcon,
+  "Excel": excelIcon,
+  "Machine Learning": mlIcon,
+};
+
 export default function SkillCard({ skill, index }) {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Define skill proficiency levels (you can customize these)
+  // Define skill proficiency levels
   const skillLevels = {
     "React": 90,
     "Node.js": 85,
@@ -14,12 +53,12 @@ export default function SkillCard({ skill, index }) {
     "MongoDB": 85,
     "SQL": 78,
     "Express": 82,
-    "Exprees": 82 // Fixed typo from your data
+    "Exprees": 82
   };
 
   const proficiency = skillLevels[skill.name] || 75;
 
-  // Define CSS classes for different skill types (safer than dynamic parsing)
+  // Define CSS classes for different skill types
   const getSkillClasses = (skillName) => {
     const classMap = {
       "React": {
@@ -76,10 +115,6 @@ export default function SkillCard({ skill, index }) {
         text: "text-gray-600",
         border: "border-gray-200 dark:border-gray-800"
       },
-
-
-
-      
     };
     return classMap[skillName] || {
       gradient: "from-purple-400 to-pink-400",
@@ -92,34 +127,20 @@ export default function SkillCard({ skill, index }) {
   const skillClasses = getSkillClasses(skill.name);
 
   const cardVariants = {
-    initial: { 
-      scale: 1,
-      rotateY: 0
-    },
+    initial: { scale: 1, rotateY: 0 },
     hover: { 
       scale: 1.05,
       rotateY: 5,
-      transition: {
-        type: "spring",
-        damping: 15,
-        stiffness: 300
-      }
+      transition: { type: "spring", damping: 15, stiffness: 300 }
     }
   };
 
   const iconVariants = {
-    initial: { 
-      rotate: 0,
-      scale: 1 
-    },
+    initial: { rotate: 0, scale: 1 },
     hover: { 
       rotate: 360,
       scale: 1.2,
-      transition: {
-        type: "spring",
-        damping: 10,
-        stiffness: 200
-      }
+      transition: { type: "spring", damping: 10, stiffness: 200 }
     }
   };
 
@@ -127,11 +148,7 @@ export default function SkillCard({ skill, index }) {
     initial: { width: 0 },
     animate: { 
       width: `${proficiency}%`,
-      transition: {
-        duration: 1.5,
-        delay: 0.2 + (index * 0.1),
-        ease: "easeOut"
-      }
+      transition: { duration: 1.5, delay: 0.2 + (index * 0.1), ease: "easeOut" }
     }
   };
 
@@ -145,12 +162,10 @@ export default function SkillCard({ skill, index }) {
       onHoverEnd={() => setIsHovered(false)}
       style={{ transformStyle: "preserve-3d" }}
     >
-      {/* Glow effect on hover */}
+      {/* Glow effect */}
       <motion.div
         className={`absolute -inset-0.5 rounded-2xl bg-gradient-to-r ${skillClasses.gradient} opacity-0 group-hover:opacity-75 transition-opacity duration-300 blur-sm`}
-        animate={{
-          opacity: isHovered ? 0.75 : 0,
-        }}
+        animate={{ opacity: isHovered ? 0.75 : 0 }}
         transition={{ duration: 0.3 }}
       />
 
@@ -161,34 +176,29 @@ export default function SkillCard({ skill, index }) {
       >
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" 
-               style={{
-                 backgroundImage: `radial-gradient(circle at 20px 20px, currentColor 1px, transparent 1px)`,
-                 backgroundSize: '20px 20px'
-               }}
+          <div 
+            className="absolute inset-0" 
+            style={{
+              backgroundImage: `radial-gradient(circle at 20px 20px, currentColor 1px, transparent 1px)`,
+              backgroundSize: '20px 20px'
+            }}
           />
         </div>
 
         {/* Content */}
         <div className="relative z-10">
-          {/* Header with icon and name */}
+          {/* Header */}
           <div className="flex items-center gap-4 mb-4">
-            <motion.div 
-              className="relative"
-              variants={iconVariants}
-            >
-              {/* Icon container with gradient border */}
+            <motion.div className="relative" variants={iconVariants}>
               <motion.div
                 className={`w-14 h-14 rounded-xl bg-gradient-to-br ${skillClasses.gradient} p-0.5`}
-                animate={{
-                  rotate: isHovered ? [0, 5, -5, 0] : 0
-                }}
+                animate={{ rotate: isHovered ? [0, 5, -5, 0] : 0 }}
                 transition={{ duration: 0.5 }}
               >
                 <div className="w-full h-full bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center">
-                  {skill.icon ? (
+                  {skillIcons[skill.name] ? (
                     <motion.img 
-                      src={skill.icon} 
+                      src={skillIcons[skill.name]} 
                       alt={skill.name} 
                       className="w-8 h-8 object-contain"
                       whileHover={{ scale: 1.1 }}
@@ -201,34 +211,18 @@ export default function SkillCard({ skill, index }) {
                   )}
                 </div>
               </motion.div>
-
-              {/* Floating particles */}
-              {isHovered && (
-                <motion.div
-                  className="absolute -top-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full"
-                  initial={{ scale: 0 }}
-                  animate={{ 
-                    scale: [0, 1, 0],
-                    y: [-10, -20, -10],
-                    opacity: [0, 1, 0]
-                  }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                />
-              )}
             </motion.div>
 
             <div className="flex-1">
               <motion.h3 
                 className="font-bold text-lg text-gray-800 dark:text-white"
-                animate={{
-                  color: isHovered ? "#3B82F6" : undefined
-                }}
+                animate={{ color: isHovered ? "#3B82F6" : undefined }}
                 transition={{ duration: 0.3 }}
               >
                 {skill.name}
               </motion.h3>
-              
-              {/* Skill level indicator */}
+
+              {/* Progress bar */}
               <div className="flex items-center gap-2 mt-1">
                 <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                   <motion.div
@@ -250,7 +244,7 @@ export default function SkillCard({ skill, index }) {
             </div>
           </div>
 
-          {/* Experience level badge */}
+          {/* Badge + Stars */}
           <motion.div 
             className="flex items-center justify-between"
             initial={{ opacity: 0, y: 10 }}
@@ -260,8 +254,7 @@ export default function SkillCard({ skill, index }) {
             <div className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${skillClasses.gradient} text-white`}>
               {proficiency >= 90 ? "Expert" : proficiency >= 80 ? "Advanced" : proficiency >= 70 ? "Intermediate" : "Learning"}
             </div>
-            
-            {/* Interactive stars */}
+
             <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
                 <motion.div
@@ -272,27 +265,14 @@ export default function SkillCard({ skill, index }) {
                       : "text-gray-300 dark:text-gray-600"
                   }`}
                   whileHover={{ scale: 1.2 }}
-                  animate={{
-                    opacity: isHovered ? [0.5, 1, 0.5] : 1
-                  }}
-                  transition={{ 
-                    duration: 0.5,
-                    delay: star * 0.1,
-                    repeat: isHovered ? Infinity : 0
-                  }}
+                  animate={{ opacity: isHovered ? [0.5, 1, 0.5] : 1 }}
+                  transition={{ duration: 0.5, delay: star * 0.1, repeat: isHovered ? Infinity : 0 }}
                 >
                   ★
                 </motion.div>
               ))}
             </div>
           </motion.div>
-
-          {/* Hover overlay effect */}
-          <motion.div
-            className={`absolute inset-0 rounded-2xl ${skillClasses.bg} opacity-0`}
-            animate={{ opacity: isHovered ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
-          />
         </div>
       </motion.div>
     </motion.div>
