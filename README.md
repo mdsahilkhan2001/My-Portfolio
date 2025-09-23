@@ -1,4 +1,6 @@
 # 🌐 My Portfolio – MD SAHIL KHAN
+### 🏠 Home Page
+![Home Screenshot](./src/assets/screenshots/S01.png)
 
 Welcome to my personal portfolio website 🚀  
 This portfolio showcases my **skills, projects, and experience** as a **Frontend Developer | MERN Stack Developer | Data Science Enthusiast**.  
@@ -55,8 +57,18 @@ portfolio/
 ---
 
 ## 📸 Screenshots
-### 💻 Hero Section
-![Hero Section](./public/images/projects/f1-streetwear.png)
+![Home Screenshot](./src/assets/screenshots/S01.png)
+![About](./src/assets/screenshots/S2.png)
+![Skill](./src/assets/screenshots/S3.png)
+![skill2](./src/assets/screenshots/S4.png)
+![project](./src/assets/screenshots/S5.png)
+![education](./src/assets/screenshots/S6.png)
+![exp](./src/assets/screenshots/S7.png)
+![contact](./src/assets/screenshots/S8.png)
+
+
+
+ 
 
 ---
 
@@ -66,7 +78,7 @@ Clone the repo and run locally:
 
 ```bash
 # Clone repository
-git clone https://github.com/mdsahilkhan2001/My-portfolio.git
+git clone https://github.com/mdsahilkhan2001/My-Portfolio
 
 cd My-portfolio
 
@@ -75,3 +87,11 @@ npm install
 
 # Run development server
 npm run dev
+
+
+📬 Contact
+📧 Email: mdsahilkhan2001@gmail.com
+
+🔗 LinkedIn: linkedin.com/in/sahilkhanq1
+
+💻 GitHub: github.com/mdsahilkhan2001
