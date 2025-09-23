@@ -1,4 +1,4 @@
- import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 
@@ -11,10 +11,22 @@ const links = [
   { id: "contact", label: "Contact", icon: "📧" }
 ];
 
-export default function Navbar({ theme, setTheme }) {
+export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+
+  // ✅ Theme state with default = "dark"
+  const [theme, setTheme] = useState("dark");
+
+  // Apply theme to <html> tag
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [theme]);
 
   // Track active section and scroll state
   useEffect(() => {
@@ -28,15 +40,15 @@ export default function Navbar({ theme, setTheme }) {
         const rect = section.getBoundingClientRect();
         return rect.top <= 100 && rect.bottom >= 100;
       });
-      
+
       if (current) {
         setActiveSection(current.id);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleScroll(); // Call once to set initial state
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleNav = (id) => {
@@ -50,19 +62,13 @@ export default function Navbar({ theme, setTheme }) {
 
   const logoVariants = {
     initial: { scale: 1 },
-    hover: { 
-      scale: 1.05,
-      transition: { duration: 0.2 }
-    },
+    hover: { scale: 1.05, transition: { duration: 0.2 } },
     tap: { scale: 0.95 }
   };
 
   const navLinkVariants = {
     initial: { y: 0 },
-    hover: { 
-      y: -2,
-      transition: { duration: 0.2, ease: "easeOut" }
-    }
+    hover: { y: -2, transition: { duration: 0.2, ease: "easeOut" } }
   };
 
   const mobileMenuVariants = {
@@ -99,9 +105,9 @@ export default function Navbar({ theme, setTheme }) {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-lg border-b border-gray-200/50 dark:border-gray-800/50' 
-          : 'backdrop-blur-sm bg-white/60 dark:bg-gray-900/60 border-b border-gray-200/30 dark:border-gray-800/30'
+        scrolled
+          ? "backdrop-blur-md bg-white/80 dark:bg-gray-900/80 shadow-lg border-b border-gray-200/50 dark:border-gray-800/50"
+          : "backdrop-blur-sm bg-white/60 dark:bg-gray-900/60 border-b border-gray-200/30 dark:border-gray-800/30"
       }`}
     >
       <div className="container flex items-center justify-between h-16 lg:h-18">
@@ -130,7 +136,7 @@ export default function Navbar({ theme, setTheme }) {
             />
           </motion.div>
           <div>
-            <motion.h1 
+            <motion.h1
               className="font-bold text-lg bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
               whileHover={{ scale: 1.02 }}
             >
@@ -160,8 +166,8 @@ export default function Navbar({ theme, setTheme }) {
                 onClick={() => handleNav(link.id)}
                 className={`relative px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 ${
                   activeSection === link.id
-                    ? 'text-white'
-                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                    ? "text-white"
+                    : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
                 }`}
               >
                 {/* Active background */}
@@ -181,20 +187,14 @@ export default function Navbar({ theme, setTheme }) {
           </div>
 
           {/* Theme Toggle */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <ThemeToggle theme={theme} setTheme={setTheme} />
           </motion.div>
         </div>
 
         {/* Mobile Controls */}
         <div className="lg:hidden flex items-center gap-3">
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <ThemeToggle theme={theme} setTheme={setTheme} />
           </motion.div>
 
@@ -210,20 +210,13 @@ export default function Navbar({ theme, setTheme }) {
               animate={{ rotate: open ? 180 : 0 }}
               transition={{ duration: 0.3 }}
             >
-              <svg 
-                className="w-6 h-6" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <motion.path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   animate={{
-                    d: open 
-                      ? "M6 18L18 6M6 6l12 12" 
-                      : "M4 6h16M4 12h16M4 18h16"
+                    d: open ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
                   }}
                   transition={{ duration: 0.3 }}
                 />
@@ -252,8 +245,8 @@ export default function Navbar({ theme, setTheme }) {
                     onClick={() => handleNav(link.id)}
                     className={`flex items-center gap-3 p-4 rounded-xl text-left transition-all duration-300 ${
                       activeSection === link.id
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg transform scale-105'
-                        : 'bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                        ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg transform scale-105"
+                        : "bg-gray-50 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                     }`}
                     whileHover={{ scale: activeSection === link.id ? 1.05 : 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -288,7 +281,7 @@ export default function Navbar({ theme, setTheme }) {
       <motion.div
         className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 origin-left"
         style={{
-          scaleX: scrolled ? 1 : 0,
+          scaleX: scrolled ? 1 : 0
         }}
         initial={{ scaleX: 0 }}
         animate={{ scaleX: scrolled ? 1 : 0 }}
