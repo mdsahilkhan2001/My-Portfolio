@@ -3,52 +3,60 @@ import TypedText from "./TypedText";
 import { siteMeta } from "../../data/siteContent";
 import { motion } from "framer-motion";
 
+// ✅ Import image from assets
+import profile from "../../assets/profile.jpg";
+
 export default function Hero() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const updateMousePosition = (e) => {
-      setMousePosition({ 
+      setMousePosition({
         x: (e.clientX / window.innerWidth) * 100,
-        y: (e.clientY / window.innerHeight) * 100 
+        y: (e.clientY / window.innerHeight) * 100,
       });
     };
-    window.addEventListener('mousemove', updateMousePosition);
-    return () => window.removeEventListener('mousemove', updateMousePosition);
+    window.addEventListener("mousemove", updateMousePosition);
+    return () => window.removeEventListener("mousemove", updateMousePosition);
   }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 }
-    }
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
   };
 
   const itemVariants = {
     hidden: { y: 60, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { type: "spring", damping: 20, stiffness: 100 }
-    }
+      transition: { type: "spring", damping: 20, stiffness: 100 },
+    },
   };
 
   const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center relative overflow-hidden">
+    <section
+      id="home"
+      className="min-h-screen flex items-center relative overflow-hidden"
+    >
       {/* Dynamic Background */}
       <div className="absolute inset-0">
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800"
           style={{
-            background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)`
+            background: `radial-gradient(circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(59, 130, 246, 0.15) 0%, transparent 50%)`,
           }}
         />
-        
+
         {/* Floating Elements */}
         <motion.div
           className="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full"
@@ -68,7 +76,7 @@ export default function Hero() {
       </div>
 
       <div className="container relative z-10">
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -101,10 +109,10 @@ export default function Hero() {
                 </motion.span>
                 <br />
                 I'm{" "}
-                <motion.span 
+                <motion.span
                   className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent"
-                  animate={{ 
-                    backgroundPosition: ["0%", "100%", "0%"] 
+                  animate={{
+                    backgroundPosition: ["0%", "100%", "0%"],
                   }}
                   transition={{ duration: 4, repeat: Infinity }}
                   style={{ backgroundSize: "200%" }}
@@ -140,7 +148,7 @@ export default function Hero() {
                   </motion.span>
                 </span>
               </motion.button>
-              
+
               <motion.a
                 href={siteMeta.resumeUrl}
                 target="_blank"
@@ -157,11 +165,17 @@ export default function Hero() {
               {[
                 { icon: "💻", url: siteMeta.github, label: "GitHub" },
                 { icon: "💼", url: siteMeta.linkedin, label: "LinkedIn" },
-                { icon: "✉️", action: () => scrollToSection("contact"), label: "Contact" }
+                {
+                  icon: "✉️",
+                  action: () => scrollToSection("contact"),
+                  label: "Contact",
+                },
               ].map((social, i) => (
                 <motion.button
                   key={i}
-                  onClick={social.action || (() => window.open(social.url, "_blank"))}
+                  onClick={
+                    social.action || (() => window.open(social.url, "_blank"))
+                  }
                   className="w-14 h-14 bg-white dark:bg-gray-800 rounded-xl shadow-lg flex items-center justify-center text-xl hover:shadow-xl transition-all duration-300"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
@@ -177,20 +191,20 @@ export default function Hero() {
 
           {/* Profile Card */}
           <motion.div variants={itemVariants} className="flex justify-center">
-            <motion.div 
+            <motion.div
               className="relative"
               animate={{ y: [-10, 10, -10] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-3xl blur-2xl opacity-20 scale-110" />
-              
-              <motion.div 
+
+              <motion.div
                 className="relative w-80 h-96 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-3xl p-8 shadow-2xl border border-white/20 dark:border-gray-700/20"
-                whileHover={{ 
-                  rotateY: 10, 
+                whileHover={{
+                  rotateY: 10,
                   rotateX: 5,
-                  scale: 1.05 
+                  scale: 1.05,
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
@@ -199,14 +213,18 @@ export default function Hero() {
                   <motion.div
                     className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    transition={{
+                      duration: 20,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
                   />
-                  <img 
-                    src="/public/profile.jpg" 
-                    alt="Profile" 
-                    className="relative w-28 h-28 object-cover rounded-full mx-auto top-2 left-2 border-4 border-white dark:border-gray-900" 
+                  <img
+                    src={profile}
+                    alt="Profile"
+                    className="relative w-28 h-28 object-cover rounded-full mx-auto top-2 left-2 border-4 border-white dark:border-gray-900"
                   />
-                  
+
                   <motion.div
                     className="absolute -bottom-1 -right-1 w-8 h-8 bg-green-400 rounded-full border-4 border-white dark:border-gray-800 flex items-center justify-center text-white text-sm font-bold"
                     animate={{ scale: [1, 1.2, 1] }}
@@ -221,7 +239,7 @@ export default function Hero() {
                   <p className="text-gray-500 dark:text-gray-400">
                     📍 {siteMeta.location || "Remote"}
                   </p>
-                  
+
                   <div className="flex justify-center gap-2">
                     {["React", "Node.js", "Next.js"].map((skill, i) => (
                       <motion.span
@@ -243,7 +261,8 @@ export default function Hero() {
                     transition={{ delay: 2 }}
                   >
                     <div className="text-sm text-gray-600 dark:text-gray-400">
-                      <span className="text-green-500">●</span> Available for projects
+                      <span className="text-green-500">●</span> Available for
+                      projects
                     </div>
                   </motion.div>
                 </div>
