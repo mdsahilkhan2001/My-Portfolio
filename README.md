@@ -8,7 +8,7 @@ It is built with **modern technologies** and follows the latest **UI/UX design t
 
 ## 👨‍💻 About Me
 - 💼 **Profession:** Frontend Developer | MERN Stack | Data Science Enthusiast  
-- 📍 Based in Kalyan, Mumbai, India  
+- 📍 Based in BTM Layout Banglore , India  
 - 🎓 B.Tech in Computer Science (Gaya College of Engineering)  
 - 📚 Certifications: CCNA, PCAP: Programming Essentials in Python  
 - 🌱 Currently exploring **React.js, MERN stack projects, and Data Science applications**
@@ -50,8 +50,6 @@ portfolio/
 │ ├─ utils/ # animations, helpers
 │ ├─ App.jsx
 │ └─ main.jsx
-
-
 ---
 
 ## 📸 Screenshots
