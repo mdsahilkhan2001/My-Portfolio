@@ -1,6 +1,8 @@
 # 🌐 My Portfolio – MD SAHIL KHAN
 ### 🏠 Home Page
 ![Home Screenshot](./src/assets/screenshots/S01.png)
+if you want to see magic  on my portfolio then click to dard mode icon 
+
 
 Welcome to my personal portfolio website 🚀  
 This portfolio showcases my **skills, projects, and experience** as a **Frontend Developer | MERN Stack Developer | Data Science Enthusiast**.  
