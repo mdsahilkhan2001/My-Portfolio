@@ -1,49 +1,29 @@
- import React, { useState } from "react";
-import { motion } from "framer-motion";
+import React, { useState } from 'react';
 
-// ✅ Import all icons properly
-import reactIcon from "../../assets/icons/react.png";
-import nodeIcon from "../../assets/icons/node.png";
-import nextjsIcon from "../../assets/icons/nextjs.jpeg";
-import tailwindIcon from "../../assets/icons/tailwind.jpeg";
-import pythonIcon from "../../assets/icons/python.png";
-import mongodbIcon from "../../assets/icons/mongodb.png";
-import sqlIcon from "../../assets/icons/sql.png";
-import expressIcon from "../../assets/icons/express.png";
-import jsIcon from "../../assets/icons/js.jpeg";
-import tsIcon from "../../assets/icons/ts.png";
-import htmlIcon from "../../assets/icons/html.jpeg";
-import cssIcon from "../../assets/icons/css.png";
-import powerbiIcon from "../../assets/icons/powerbi.jpeg";
-import tableauIcon from "../../assets/icons/tableou.png";
-import excelIcon from "../../assets/icons/excel.jpeg";
-import mlIcon from "../../assets/icons/ml.png";
+// Skills data with correct public folder paths
+const skills = [
+  { name: "React", icon: "/icons/react.png" },
+  { name: "Node.js", icon: "/icons/node.png" },
+  { name: "Next.js", icon: "/icons/nextjs.jpeg" },
+  { name: "Tailwind CSS", icon: "/icons/tailwind.jpeg" },
+  { name: "Python", icon: "/icons/python.png" },
+  { name: "MongoDB", icon: "/icons/mongodb.png" },
+  { name: "SQL", icon: "/icons/sql.png" },
+  { name: "Express", icon: "/icons/express.png" },
+  { name: "JavaScript", icon: "/icons/js.jpeg" },
+  { name: "TypeScript", icon: "/icons/ts.png" },
+  { name: "HTML", icon: "/icons/html.jpeg" },
+  { name: "CSS", icon: "/icons/css.png" },
+  { name: "Power BI", icon: "/icons/powerbi.jpeg" },
+  { name: "Tableau", icon: "/icons/tableou.png" },
+  { name: "Excel", icon: "/icons/excel.jpeg" },
+  { name: "Machine Learning", icon: "/icons/ml.png" },
+];
 
-// ✅ Map skill names to imported icons
-const skillIcons = {
-  "React": reactIcon,
-  "Node.js": nodeIcon,
-  "Next.js": nextjsIcon,
-  "Tailwind CSS": tailwindIcon,
-  "Python": pythonIcon,
-  "MongoDB": mongodbIcon,
-  "SQL": sqlIcon,
-  "Express": expressIcon,
-  "Exprees": expressIcon, // handle typo
-  "javascript": jsIcon,
-  "Typescript": tsIcon,
-  "HTML": htmlIcon,
-  "CSS": cssIcon,
-  "PowerBi": powerbiIcon,
-  "Tableau": tableauIcon,
-  "Excel": excelIcon,
-  "Machine Learning": mlIcon,
-};
-
-export default function SkillCard({ skill, index }) {
+function SkillCard({ skill, index = 0 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
-  // Define skill proficiency levels
   const skillLevels = {
     "React": 90,
     "Node.js": 85,
@@ -53,228 +33,362 @@ export default function SkillCard({ skill, index }) {
     "MongoDB": 85,
     "SQL": 78,
     "Express": 82,
-    "Exprees": 82
+    "JavaScript": 88,
+    "TypeScript": 82,
+    "HTML": 95,
+    "CSS": 90,
+    "Power BI": 75,
+    "Tableau": 78,
+    "Excel": 85,
+    "Machine Learning": 70,
   };
 
   const proficiency = skillLevels[skill.name] || 75;
 
-  // Define CSS classes for different skill types
   const getSkillClasses = (skillName) => {
     const classMap = {
       "React": {
         gradient: "from-blue-400 to-cyan-400",
         bg: "bg-blue-50 dark:bg-blue-900/20",
-        text: "text-blue-600",
-        border: "border-blue-200 dark:border-blue-800"
+        text: "text-blue-600 dark:text-blue-400",
+        border: "border-blue-200 dark:border-blue-800",
+        shadow: "shadow-blue-500/25"
       },
       "Node.js": {
         gradient: "from-green-400 to-emerald-400",
         bg: "bg-green-50 dark:bg-green-900/20",
-        text: "text-green-600",
-        border: "border-green-200 dark:border-green-800"
+        text: "text-green-600 dark:text-green-400",
+        border: "border-green-200 dark:border-green-800",
+        shadow: "shadow-green-500/25"
       },
       "Next.js": {
         gradient: "from-gray-700 to-gray-900",
         bg: "bg-gray-50 dark:bg-gray-900/20",
-        text: "text-gray-600",
-        border: "border-gray-200 dark:border-gray-800"
+        text: "text-gray-600 dark:text-gray-300",
+        border: "border-gray-200 dark:border-gray-800",
+        shadow: "shadow-gray-500/25"
       },
       "Tailwind CSS": {
         gradient: "from-teal-400 to-blue-400",
         bg: "bg-teal-50 dark:bg-teal-900/20",
-        text: "text-teal-600",
-        border: "border-teal-200 dark:border-teal-800"
+        text: "text-teal-600 dark:text-teal-400",
+        border: "border-teal-200 dark:border-teal-800",
+        shadow: "shadow-teal-500/25"
       },
       "Python": {
         gradient: "from-yellow-400 to-orange-400",
         bg: "bg-yellow-50 dark:bg-yellow-900/20",
-        text: "text-yellow-600",
-        border: "border-yellow-200 dark:border-yellow-800"
+        text: "text-yellow-600 dark:text-yellow-400",
+        border: "border-yellow-200 dark:border-yellow-800",
+        shadow: "shadow-yellow-500/25"
       },
       "MongoDB": {
         gradient: "from-green-600 to-green-800",
         bg: "bg-green-50 dark:bg-green-900/20",
-        text: "text-green-600",
-        border: "border-green-200 dark:border-green-800"
+        text: "text-green-600 dark:text-green-400",
+        border: "border-green-200 dark:border-green-800",
+        shadow: "shadow-green-500/25"
       },
       "SQL": {
         gradient: "from-blue-600 to-indigo-600",
         bg: "bg-blue-50 dark:bg-blue-900/20",
-        text: "text-blue-600",
-        border: "border-blue-200 dark:border-blue-800"
+        text: "text-blue-600 dark:text-blue-400",
+        border: "border-blue-200 dark:border-blue-800",
+        shadow: "shadow-blue-500/25"
       },
       "Express": {
         gradient: "from-gray-600 to-gray-800",
         bg: "bg-gray-50 dark:bg-gray-900/20",
-        text: "text-gray-600",
-        border: "border-gray-200 dark:border-gray-800"
+        text: "text-gray-600 dark:text-gray-300",
+        border: "border-gray-200 dark:border-gray-800",
+        shadow: "shadow-gray-500/25"
       },
-      "Exprees": {
-        gradient: "from-gray-600 to-gray-800",
-        bg: "bg-gray-50 dark:bg-gray-900/20",
-        text: "text-gray-600",
-        border: "border-gray-200 dark:border-gray-800"
+      "JavaScript": {
+        gradient: "from-yellow-300 to-yellow-500",
+        bg: "bg-yellow-50 dark:bg-yellow-900/20",
+        text: "text-yellow-600 dark:text-yellow-400",
+        border: "border-yellow-200 dark:border-yellow-800",
+        shadow: "shadow-yellow-500/25"
+      },
+      "TypeScript": {
+        gradient: "from-blue-500 to-blue-700",
+        bg: "bg-blue-50 dark:bg-blue-900/20",
+        text: "text-blue-600 dark:text-blue-400",
+        border: "border-blue-200 dark:border-blue-800",
+        shadow: "shadow-blue-500/25"
+      },
+      "HTML": {
+        gradient: "from-orange-400 to-red-500",
+        bg: "bg-orange-50 dark:bg-orange-900/20",
+        text: "text-orange-600 dark:text-orange-400",
+        border: "border-orange-200 dark:border-orange-800",
+        shadow: "shadow-orange-500/25"
+      },
+      "CSS": {
+        gradient: "from-blue-400 to-blue-600",
+        bg: "bg-blue-50 dark:bg-blue-900/20",
+        text: "text-blue-600 dark:text-blue-400",
+        border: "border-blue-200 dark:border-blue-800",
+        shadow: "shadow-blue-500/25"
+      },
+      "Power BI": {
+        gradient: "from-yellow-500 to-orange-500",
+        bg: "bg-yellow-50 dark:bg-yellow-900/20",
+        text: "text-yellow-600 dark:text-yellow-400",
+        border: "border-yellow-200 dark:border-yellow-800",
+        shadow: "shadow-yellow-500/25"
+      },
+      "Tableau": {
+        gradient: "from-blue-500 to-blue-700",
+        bg: "bg-blue-50 dark:bg-blue-900/20",
+        text: "text-blue-600 dark:text-blue-400",
+        border: "border-blue-200 dark:border-blue-800",
+        shadow: "shadow-blue-500/25"
+      },
+      "Excel": {
+        gradient: "from-green-500 to-green-700",
+        bg: "bg-green-50 dark:bg-green-900/20",
+        text: "text-green-600 dark:text-green-400",
+        border: "border-green-200 dark:border-green-800",
+        shadow: "shadow-green-500/25"
+      },
+      "Machine Learning": {
+        gradient: "from-purple-500 to-pink-500",
+        bg: "bg-purple-50 dark:bg-purple-900/20",
+        text: "text-purple-600 dark:text-purple-400",
+        border: "border-purple-200 dark:border-purple-800",
+        shadow: "shadow-purple-500/25"
       },
     };
+    
     return classMap[skillName] || {
       gradient: "from-purple-400 to-pink-400",
       bg: "bg-purple-50 dark:bg-purple-900/20",
-      text: "text-purple-600",
-      border: "border-purple-200 dark:border-purple-800"
+      text: "text-purple-600 dark:text-purple-400",
+      border: "border-purple-200 dark:border-purple-800",
+      shadow: "shadow-purple-500/25"
     };
   };
 
   const skillClasses = getSkillClasses(skill.name);
 
-  const cardVariants = {
-    initial: { scale: 1, rotateY: 0 },
-    hover: { 
-      scale: 1.05,
-      rotateY: 5,
-      transition: { type: "spring", damping: 15, stiffness: 300 }
-    }
+  const getExperienceLevel = (proficiency) => {
+    if (proficiency >= 90) return "🚀 Expert";
+    if (proficiency >= 80) return "⚡ Advanced";
+    if (proficiency >= 70) return "🎯 Intermediate";
+    return "📚 Learning";
   };
 
-  const iconVariants = {
-    initial: { rotate: 0, scale: 1 },
-    hover: { 
-      rotate: 360,
-      scale: 1.2,
-      transition: { type: "spring", damping: 10, stiffness: 200 }
-    }
-  };
-
-  const progressVariants = {
-    initial: { width: 0 },
-    animate: { 
-      width: `${proficiency}%`,
-      transition: { duration: 1.5, delay: 0.2 + (index * 0.1), ease: "easeOut" }
-    }
+  const getStarRating = (proficiency) => {
+    return Math.round(proficiency / 20);
   };
 
   return (
-    <motion.div
-      className="group relative"
-      variants={cardVariants}
-      initial="initial"
-      whileHover="hover"
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      style={{ transformStyle: "preserve-3d" }}
+    <div
+      className={`group relative transition-all duration-300 transform hover:scale-105 hover:-translate-y-2 ${
+        isHovered ? 'z-10' : ''
+      }`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        animationDelay: `${index * 0.1}s`,
+      }}
     >
-      {/* Glow effect */}
-      <motion.div
-        className={`absolute -inset-0.5 rounded-2xl bg-gradient-to-r ${skillClasses.gradient} opacity-0 group-hover:opacity-75 transition-opacity duration-300 blur-sm`}
-        animate={{ opacity: isHovered ? 0.75 : 0 }}
-        transition={{ duration: 0.3 }}
+      {/* Enhanced glow effect */}
+      <div
+        className={`absolute -inset-1 rounded-2xl bg-gradient-to-r ${skillClasses.gradient} transition-all duration-300 ${
+          isHovered ? 'opacity-60 blur-lg scale-105' : 'opacity-0 blur-sm scale-95'
+        }`}
+      />
+
+      {/* Secondary glow */}
+      <div
+        className={`absolute -inset-0.5 rounded-2xl bg-gradient-to-r ${skillClasses.gradient} transition-all duration-200 ${
+          isHovered ? 'opacity-40 blur-sm' : 'opacity-0'
+        }`}
       />
 
       {/* Main card */}
-      <motion.div 
-        className={`relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg border ${skillClasses.border} overflow-hidden`}
-        style={{ transformStyle: "preserve-3d" }}
+      <div 
+        className={`relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm p-6 rounded-2xl border ${skillClasses.border} overflow-hidden transition-all duration-300 ${
+          isHovered 
+            ? `shadow-2xl ${skillClasses.shadow}` 
+            : 'shadow-lg hover:shadow-xl'
+        }`}
       >
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div 
-            className="absolute inset-0" 
-            style={{
-              backgroundImage: `radial-gradient(circle at 20px 20px, currentColor 1px, transparent 1px)`,
-              backgroundSize: '20px 20px'
-            }}
-          />
-        </div>
+        {/* Animated background pattern */}
+        <div 
+          className={`absolute inset-0 opacity-5 transition-all duration-600 ${
+            isHovered ? 'opacity-10' : ''
+          }`}
+          style={{
+            backgroundImage: `radial-gradient(circle at 20px 20px, currentColor 1px, transparent 1px)`,
+            backgroundSize: '20px 20px',
+            backgroundPosition: isHovered ? '40px 40px' : '0px 0px',
+          }}
+        />
 
         {/* Content */}
         <div className="relative z-10">
-          {/* Header */}
+          {/* Header with icon and name */}
           <div className="flex items-center gap-4 mb-4">
-            <motion.div className="relative" variants={iconVariants}>
-              <motion.div
-                className={`w-14 h-14 rounded-xl bg-gradient-to-br ${skillClasses.gradient} p-0.5`}
-                animate={{ rotate: isHovered ? [0, 5, -5, 0] : 0 }}
-                transition={{ duration: 0.5 }}
+            <div 
+              className={`relative transition-all duration-300 ${
+                isHovered ? 'scale-105 rotate-3' : ''
+              }`}
+            >
+              {/* Icon container with enhanced gradient border */}
+              <div
+                className={`w-16 h-16 rounded-xl bg-gradient-to-br ${skillClasses.gradient} p-0.5 shadow-lg transition-all duration-300 ${
+                  isHovered ? 'shadow-2xl scale-105' : ''
+                }`}
               >
                 <div className="w-full h-full bg-white dark:bg-gray-800 rounded-xl flex items-center justify-center">
-                  {skillIcons[skill.name] ? (
-                    <motion.img 
-                      src={skillIcons[skill.name]} 
+                  {!imageError && skill.icon ? (
+                    <img 
+                      src={skill.icon} 
                       alt={skill.name} 
-                      className="w-8 h-8 object-contain"
-                      whileHover={{ scale: 1.1 }}
+                      className={`w-9 h-9 object-contain transition-all duration-200 ${
+                        isHovered ? 'scale-110' : ''
+                      }`}
+                      onError={() => setImageError(true)}
+                      loading="lazy"
                     />
                   ) : (
-                    <motion.div 
-                      className={`w-8 h-8 rounded-lg bg-gradient-to-br ${skillClasses.gradient}`}
-                      whileHover={{ scale: 1.1 }}
-                    />
+                    <div 
+                      className={`w-9 h-9 rounded-lg bg-gradient-to-br ${skillClasses.gradient} flex items-center justify-center text-white font-bold text-sm transition-all duration-200 ${
+                        isHovered ? 'scale-110' : ''
+                      }`}
+                    >
+                      {skill.name.charAt(0)}
+                    </div>
                   )}
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+
+              {/* Enhanced floating particles */}
+              {isHovered && (
+                <>
+                  <div className="absolute -top-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full animate-bounce" />
+                  <div className="absolute -top-2 left-1 w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
+                  <div className="absolute top-0 -left-1 w-1 h-1 bg-pink-400 rounded-full animate-ping" style={{ animationDelay: '0.4s' }} />
+                </>
+              )}
+            </div>
 
             <div className="flex-1">
-              <motion.h3 
-                className="font-bold text-lg text-gray-800 dark:text-white"
-                animate={{ color: isHovered ? "#3B82F6" : undefined }}
-                transition={{ duration: 0.3 }}
+              <h3 
+                className={`font-bold text-lg ${skillClasses.text} transition-all duration-300 ${
+                  isHovered ? 'scale-105 translate-x-1' : ''
+                }`}
               >
                 {skill.name}
-              </motion.h3>
-
-              {/* Progress bar */}
-              <div className="flex items-center gap-2 mt-1">
-                <div className="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                  <motion.div
-                    className={`h-full bg-gradient-to-r ${skillClasses.gradient} rounded-full`}
-                    variants={progressVariants}
-                    initial="initial"
-                    animate="animate"
-                  />
+              </h3>
+              
+              {/* Enhanced skill level indicator */}
+              <div className="flex items-center gap-2 mt-2">
+                <div className="flex-1 h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden shadow-inner">
+                  <div
+                    className={`h-full bg-gradient-to-r ${skillClasses.gradient} rounded-full relative overflow-hidden transition-all duration-1000 ease-out`}
+                    style={{ 
+                      width: `${proficiency}%`,
+                      animationDelay: `${0.3 + (index * 0.15)}s`,
+                    }}
+                  >
+                    {/* Animated shine effect */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent transition-all duration-1000 ${
+                        isHovered ? 'translate-x-full' : '-translate-x-full'
+                      }`}
+                      style={{
+                        animationDelay: `${1 + (index * 0.15)}s`,
+                      }}
+                    />
+                  </div>
                 </div>
-                <motion.span 
-                  className="text-xs font-medium text-gray-500 dark:text-gray-400"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1 + (index * 0.1) }}
+                <span 
+                  className={`text-sm font-bold ${skillClasses.text} tabular-nums transition-all duration-300`}
+                  style={{
+                    animationDelay: `${1.2 + (index * 0.1)}s`,
+                  }}
                 >
                   {proficiency}%
-                </motion.span>
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Badge + Stars */}
-          <motion.div 
-            className="flex items-center justify-between"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 + (index * 0.05) }}
+          {/* Enhanced experience level badge and stars */}
+          <div 
+            className="flex items-center justify-between transition-all duration-300"
+            style={{
+              animationDelay: `${0.6 + (index * 0.08)}s`,
+            }}
           >
-            <div className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${skillClasses.gradient} text-white`}>
-              {proficiency >= 90 ? "Expert" : proficiency >= 80 ? "Advanced" : proficiency >= 70 ? "Intermediate" : "Learning"}
+            <div 
+              className={`px-4 py-2 rounded-full text-xs font-bold bg-gradient-to-r ${skillClasses.gradient} text-white shadow-lg transition-all duration-200 ${
+                isHovered ? 'scale-110 -translate-y-1 shadow-2xl' : ''
+              }`}
+            >
+              {getExperienceLevel(proficiency)}
             </div>
-
+            
+            {/* Enhanced interactive stars */}
             <div className="flex gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
-                <motion.div
+                <div
                   key={star}
-                  className={`w-3 h-3 ${
-                    star <= Math.round(proficiency / 20) 
-                      ? "text-yellow-400" 
-                      : "text-gray-300 dark:text-gray-600"
+                  className={`text-lg cursor-pointer transition-all duration-200 ${
+                    star <= getStarRating(proficiency) 
+                      ? "text-yellow-400 hover:scale-125" 
+                      : "text-gray-300 dark:text-gray-600 hover:scale-110"
+                  } ${
+                    isHovered && star <= getStarRating(proficiency) 
+                      ? 'animate-pulse scale-110' 
+                      : ''
                   }`}
-                  whileHover={{ scale: 1.2 }}
-                  animate={{ opacity: isHovered ? [0.5, 1, 0.5] : 1 }}
-                  transition={{ duration: 0.5, delay: star * 0.1, repeat: isHovered ? Infinity : 0 }}
+                  style={{
+                    animationDelay: `${star * 0.1}s`,
+                  }}
                 >
                   ★
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
+
+          {/* Enhanced hover overlay effect */}
+          <div
+            className={`absolute inset-0 rounded-2xl ${skillClasses.bg} transition-all duration-300 ${
+              isHovered ? 'opacity-10 scale-105' : 'opacity-0 scale-100'
+            }`}
+          />
         </div>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
+  );
+}
+
+// Demo component showing all skills
+export default function SkillsDemo() {
+  return (
+    <div className="p-8 bg-gradient-to-br from-gray-50 to-blue-50 dark:from-gray-900 to-gray-800 min-h-screen">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            Enhanced Skills Showcase
+          </h1>
+          <p className="text-gray-600 dark:text-gray-300 text-lg">
+            Interactive skill cards with proper image loading and enhanced animations
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          {skills.map((skill, index) => (
+            <SkillCard key={skill.name} skill={skill} index={index} />
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
