@@ -3,13 +3,16 @@ import productImg from "../assets/product.png";
 import f1Img from "../assets/f1.png";
 import figmaImg from "../assets/figma.png";
 
+// ✅ Import profile photo
+// import profilePhoto from "../public/profile.jpg"
 
+// ✅ Import skill icons (all bundled, no string paths)
 import reactIcon from "../assets/icons/react.png";
 import nodeIcon from "../assets/icons/node.png";
 import nextjsIcon from "../assets/icons/nextjs.jpeg";
 import tailwindIcon from "../assets/icons/tailwind.jpeg";
 import pythonIcon from "../assets/icons/python.png";
-import mongoIcon from "../assets/icons/mongodb.png";
+import mongodbIcon from "../assets/icons/mongodb.png";
 import sqlIcon from "../assets/icons/sql.png";
 import expressIcon from "../assets/icons/express.png";
 import jsIcon from "../assets/icons/js.jpeg";
@@ -20,8 +23,6 @@ import powerbiIcon from "../assets/icons/powerbi.jpeg";
 import tableauIcon from "../assets/icons/tableou.png";
 import excelIcon from "../assets/icons/excel.jpeg";
 import mlIcon from "../assets/icons/ml.png";
-
-
 
 export const siteMeta = {
   name: "MD SAHIL KHAN",
@@ -39,25 +40,25 @@ export const siteMeta = {
 };
 
 export const about = {
-  photo: "/src/assets/images/pfp.jpg",
+  photo: "/profile.jpg",
   summary: "Full Stack Developer with expertise in MERN stack (MongoDB, Express.js, React.js, Node.js). Experienced in building scalable web applications, RESTful APIs, and responsive user interfaces. Familiar with data analysis and machine learning concepts.",
   location: "BTM Layout,Bangalore, Karnataka"
 };
 
- export const skills = [
+export const skills = [
   { name: "React", icon: reactIcon },
   { name: "Node.js", icon: nodeIcon },
   { name: "Next.js", icon: nextjsIcon },
   { name: "Tailwind CSS", icon: tailwindIcon },
   { name: "Python", icon: pythonIcon },
-  { name: "MongoDB", icon: mongoIcon },
+  { name: "MongoDB", icon: mongodbIcon },
   { name: "SQL", icon: sqlIcon },
-  { name: "Express", icon: expressIcon },
+  { name: "Exprees", icon: expressIcon }, // kept typo to match your existing data
   { name: "JavaScript", icon: jsIcon },
-  { name: "TypeScript", icon: tsIcon },
+  { name: "Typescript", icon: tsIcon },
   { name: "HTML", icon: htmlIcon },
   { name: "CSS", icon: cssIcon },
-  { name: "Power BI", icon: powerbiIcon },
+  { name: "PowerBi", icon: powerbiIcon },
   { name: "Tableau", icon: tableauIcon },
   { name: "Excel", icon: excelIcon },
   { name: "Machine Learning", icon: mlIcon },
